@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru" data-l="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Юсуф Муратов — Middle Android Developer</title>
+<meta name="description" content="Юсуф Муратов — Middle Android Developer. Около 4 лет коммерческого опыта, Kotlin, Jetpack Compose, архитектура и развитие Android-продуктов.">
+<meta name="theme-color" content="#0A1128">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A1128; --surface:#121C3D; --line:rgba(255,255,255,.11);
+  --text:#EEF2FF; --muted:#9AA8C7; --accent:#8CAAFF; --accent-soft:rgba(140,170,255,.16); --navy:#0A1330; --ease:cubic-bezier(.2,.7,.2,1);
+  --font:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg);scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--font);-webkit-font-smoothing:antialiased}
+html[data-l="ru"] [lang="en"],html[data-l="en"] [lang="ru"]{display:none}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;letter-spacing:-.02em;color:var(--text);text-decoration:none}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.9rem}
+nav a:hover{color:var(--text)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.lang button{all:unset;cursor:pointer;padding:4px 12px;border-radius:999px;font-size:.82rem;color:var(--muted)}
+html[data-l="ru"] .lang [data-set="ru"],html[data-l="en"] .lang [data-set="en"]{background:var(--text);color:#fff;font-weight:700}
+.hero{padding:64px 0 26px;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
+.eyebrow{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--accent);margin:0 0 14px}
+h1{font-size:clamp(2.25rem,5vw,4rem);line-height:1.04;font-weight:800;letter-spacing:-.045em;margin:0 0 22px;max-width:14ch}
+.lead{font-size:1.08rem;color:var(--muted);max-width:39em;margin:0 0 28px;line-height:1.75}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 19px;border-radius:12px;font-size:.93rem;font-weight:800;text-decoration:none;border:1.5px solid var(--text);color:var(--text);background:transparent;transition:transform .18s ease,filter .18s ease}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+.hero-visual{min-width:0;padding:14px 0 10px}
+.phones{display:flex;gap:14px;justify-content:center;align-items:flex-end}
+.ph{position:relative;margin:0;width:100%;max-width:168px;aspect-ratio:9/19;border:6px solid var(--text);border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#EEF2FD,#D9E2FA);display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 18px 36px rgba(20,33,61,.12)}
+.ph span{font-size:.8rem;font-weight:700;color:var(--muted);padding:8px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phones .ph:nth-child(2){transform:translateY(-20px)}
+.phones .ph:nth-child(3){transform:translateY(-4px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:22px 0 12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 22px;min-width:0}
+.stat strong{display:block;font-size:clamp(1.65rem,3vw,2.15rem);line-height:1.1;letter-spacing:-.04em;font-weight:800;color:var(--text);margin-bottom:8px}
+.stat span{display:block;font-size:.88rem;line-height:1.5;color:var(--muted)}
+section{padding:66px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
+h2{font-size:clamp(1.65rem,3vw,2.1rem);font-weight:800;letter-spacing:-.035em;line-height:1.15;margin:0 0 8px}
+.sub{color:var(--muted);margin:0;max-width:45em}
+.project-list{display:grid;gap:18px}
+.card{display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px;margin:0;overflow:hidden}
+.card:nth-child(even) .project-visual{order:-1}
+.card h3{margin:0 0 10px;font-size:1.4rem;font-weight:800;letter-spacing:-.025em}
+.card p{margin:0 0 14px}
+.card p:last-child{margin-bottom:0}
+.tag{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.02em;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:12px}
+.project-meta{font-size:.86rem;color:var(--muted);font-weight:600;margin:14px 0!important}
+.project-visual{min-width:0}
+.project-visual .phones{justify-content:center}
+.project-visual .ph{max-width:148px}
+.links{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:18px!important}
+.links a{font-weight:800;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.metric-inline{display:flex;align-items:baseline;gap:12px;margin:18px 0 14px}
+.metric-inline strong{font-size:1.7rem;line-height:1.1;font-weight:800;letter-spacing:-.04em}
+.metric-inline span{font-size:.87rem;color:var(--muted)}
+.compact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.compact-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}
+.compact-card h3{font-size:1.05rem;line-height:1.3;margin:0;font-weight:800}
+.compact-card p{font-size:.93rem;color:var(--muted);margin:0;flex:1}
+.compact-card .project-meta{margin:0!important}
+.compact-card .links{margin-top:4px!important}
+.github-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.github-card{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}
+.github-card .repo-type{font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.github-card h3{font-size:1.06rem;line-height:1.3;margin:0;font-weight:800;overflow-wrap:anywhere}
+.github-card p{font-size:.9rem;line-height:1.6;color:var(--muted);margin:0;flex:1}
+.github-card a{font-weight:800;text-decoration:none;align-self:flex-start}
+.github-footer{margin-top:18px}
+.about{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:start}
+.about p{margin:0 0 14px;max-width:44em}
+.about-copy{color:var(--muted)}
+.strengths{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.strengths li{padding:0 0 14px;border-bottom:1px solid var(--line)}
+.strengths b{display:block;font-size:.96rem;margin-bottom:3px}
+.strengths span{display:block;color:var(--muted);font-size:.91rem}
+.contact{background:var(--text);color:#fff;border-radius:24px;padding:42px;margin:18px 0 48px}
+.contact h2{color:#fff}
+.contact .sub{color:#B9C4D8;margin-bottom:24px}
+.contact a{color:#fff}
+.contact .btn{border-color:#fff;color:#fff}
+.contact .btn.main{background:#fff;color:var(--text);border-color:#fff}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:22px}
+.contact .row a{font-size:.9rem;font-weight:700;text-decoration:none}
+footer{padding:0 0 36px;color:var(--muted);font-size:.86rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:850px){
+  .wrap{padding:0 20px}.hero{grid-template-columns:1fr;gap:26px;padding-top:44px}.hero-visual{padding-top:0}.hero h1{max-width:18ch}.card,.about{grid-template-columns:1fr;gap:24px}.card:nth-child(even) .project-visual{order:0}.project-visual{order:-1}.project-visual .ph{max-width:136px}.github-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  nav{gap:10px}nav a{display:none}.wrap{padding:0 16px}header{padding:16px 0}.hero{padding-top:34px}.stats{grid-template-columns:1fr;gap:10px}.stat{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}.stat strong{margin:0;white-space:nowrap}.stat span{text-align:right;max-width:190px}.phones{gap:8px}.ph{max-width:31%;border-width:4px;border-radius:22px}.ph span{font-size:.68rem}.card{padding:20px;border-radius:18px}.compact-grid,.github-grid{grid-template-columns:1fr}.section-head{display:block}.section-head .links{margin-top:12px!important}section{padding:48px 0}.contact{padding:28px 20px;border-radius:20px}.cta .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* ---- v3: blue light-rays hero, white cards ---- */
+body{background:transparent;position:relative}
+body::before{content:"";position:absolute;top:0;left:0;right:0;height:1150px;z-index:-1;background:linear-gradient(180deg,#0A1330 0%,#16296A 30%,#2C4C98 55%,#16285E 80%,#0A1128 100%)}
+body::after{content:"";position:absolute;top:0;left:0;right:0;height:820px;z-index:-1;pointer-events:none;background:repeating-linear-gradient(98deg,transparent 0 70px,rgba(190,210,255,.17) 110px,transparent 170px 230px);-webkit-mask-image:linear-gradient(180deg,#000,transparent 92%);mask-image:linear-gradient(180deg,#000,transparent 92%);filter:blur(14px);animation:rays 20s linear infinite}
+::selection{background:var(--accent);color:#fff}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#7FA2FF,#fff)}
+header{position:sticky;top:0;z-index:50;border:0;padding:14px 0;gap:16px;transition:background .3s,backdrop-filter .3s}
+header.scrolled{background:rgba(10,19,48,.74);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.brand{color:#fff}
+header nav{gap:2px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:4px;border-radius:999px}
+header nav a{color:rgba(255,255,255,.85);padding:7px 15px;border-radius:999px;transition:background .2s,color .2s}
+header nav a:hover{color:#fff;background:rgba(255,255,255,.16)}
+.head-right{display:flex;align-items:center;gap:10px}
+header .lang{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+header .lang button{color:rgba(255,255,255,.8)}
+html[data-l="ru"] .lang [data-set="ru"],html[data-l="en"] .lang [data-set="en"]{background:#fff;color:var(--navy)}
+.head-cta{padding:9px 16px;border-radius:999px;background:#fff;color:var(--navy);font-weight:800;font-size:.88rem;text-decoration:none;transition:transform .2s var(--ease)}
+.head-cta:hover{transform:translateY(-2px)}
+.hero{display:block;text-align:center;padding:48px 0 0}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:700;font-size:.85rem;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#5CF0A8;animation:ping 2s infinite}
+.eyebrow{display:block;background:none;border:0;padding:0;color:rgba(255,255,255,.7);letter-spacing:.08em;margin:0 0 16px}
+.hero h1{max-width:17ch;margin:0 auto 22px;color:#fff;-webkit-text-fill-color:#fff;background:none;font-size:clamp(2.4rem,6.4vw,4.8rem);line-height:1.02;letter-spacing:-.05em}
+.hero .lead{color:rgba(255,255,255,.82);margin:0 auto 30px;max-width:36em}
+.hero .cta{justify-content:center}
+.btn{border-color:var(--navy);color:var(--navy);background:transparent;transition:transform .25s var(--ease),box-shadow .25s,background .25s}
+.btn:hover{filter:none;transform:translateY(-3px)}
+.btn.main{background:#12182A;border-color:#12182A;color:#fff;box-shadow:0 12px 30px -10px rgba(10,19,48,.7)}
+.hero .btn:not(.main){background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+.hero .btn:not(.main):hover{background:rgba(255,255,255,.22)}
+.phones-crop{margin-top:46px;height:340px;overflow:hidden;padding-top:26px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.phones-crop .phones{align-items:flex-start;gap:24px}
+.phones-crop .ph{max-width:210px}
+.ph{border:5px solid #07102A;background:linear-gradient(160deg,#2C4A8C,#16295C);box-shadow:0 30px 50px -16px rgba(5,10,30,.6),0 0 0 1px rgba(255,255,255,.15);animation:float 7s ease-in-out infinite}
+.ph:nth-child(2){animation-duration:8.6s;animation-delay:-2.4s}.ph:nth-child(3){animation-duration:9.6s;animation-delay:-4s}
+.ph span{color:#B8C6E8}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-76px;position:relative;z-index:2}
+.num-card{display:flex;flex-direction:column;min-height:220px;background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 24px 50px -26px rgba(10,19,48,.45);transition:transform .35s var(--ease),box-shadow .35s}
+.num-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -24px rgba(43,80,216,.5)}
+.num-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto}
+.num-head b{font-size:1.5rem;letter-spacing:-.04em}
+.num-head em{font-style:normal;font-size:.74rem;font-weight:700;padding:3px 10px;border:1px solid var(--line);border-radius:8px;color:var(--muted)}
+.num-card h3{margin:26px 0 6px;font-size:1.15rem;font-weight:800;letter-spacing:-.025em}
+.num-card p{margin:0;font-size:.88rem;color:var(--muted);line-height:1.55}
+.stats{display:flex;gap:0;padding:44px 0 6px}
+.stat{flex:1;background:none;border:0;border-radius:0;padding:0 26px;box-shadow:none}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat strong{color:var(--accent);margin-bottom:4px}
+.trust{margin:40px 0 4px;text-align:center;color:var(--muted);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;gap:46px;width:max-content;padding:14px 0;animation:scroll 44s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.chip{font-weight:800;font-size:1.35rem;letter-spacing:-.03em;color:#8A96B0;white-space:nowrap}
+.card,.compact-card,.github-card{background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -30px rgba(10,19,48,.4);position:relative;transition:transform .35s var(--ease),box-shadow .35s,border-color .35s}
+.card:hover,.compact-card:hover,.github-card:hover{transform:translateY(-5px);border-color:#B8C7F2;box-shadow:0 28px 56px -26px rgba(43,80,216,.45)}
+.card::after,.compact-card::after,.github-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(43,80,216,.09),transparent 60%)}
+.card:hover::after,.compact-card:hover::after,.github-card:hover::after{opacity:1}
+.project-visual{position:relative}
+.project-visual::before{content:"";position:absolute;inset:4% 2%;z-index:0;background:radial-gradient(closest-side,rgba(60,100,255,.38),rgba(130,170,255,.12) 62%,transparent);filter:blur(30px);animation:pulse 7s ease-in-out infinite}
+.phones{position:relative;z-index:1}
+.tag{background:var(--accent-soft);color:var(--accent)}
+.project-meta{color:var(--accent)}
+.links a,.github-card a{color:var(--accent)}
+.more-btn{all:unset;cursor:pointer;color:var(--accent);font-weight:800;font-size:.92rem;margin:2px 0 14px;display:inline-block;border-bottom:1px solid currentColor}
+.more-btn .o{display:none}.card.open .more-btn .o{display:inline}.card.open .more-btn .c{display:none}
+.collapsible .card .more{display:none}.collapsible .card.open .more{display:block}
+.compact-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:thin}
+.compact-card{flex:0 0 min(370px,84%);scroll-snap-align:start}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:0;padding:0;list-style:none}
+.path li{position:relative;padding-top:28px}
+.path li::before{content:"";position:absolute;top:0;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.path li::after{content:"";position:absolute;top:5px;left:22px;right:-20px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.4}
+.path li:last-child::after{display:none}
+.path time{display:block;font-weight:800;color:var(--accent);font-size:.88rem}
+.path b{display:block;margin:2px 0 4px}
+.path span{color:var(--muted);font-size:.92rem}
+.about{grid-template-columns:1fr}
+.contact{position:relative;overflow:hidden;background:linear-gradient(160deg,#0A1330,#1E3470 62%,#3E5C9C);box-shadow:0 40px 80px -34px rgba(10,19,48,.7)}
+.contact::before{content:"";position:absolute;width:460px;height:460px;right:-140px;top:-190px;border-radius:50%;background:radial-gradient(closest-side,rgba(150,185,255,.5),transparent);filter:blur(20px);animation:pulse 8s ease-in-out infinite}
+.contact>*{position:relative}
+.contact .sub{color:#D3DDF5}
+.contact .order{margin:-8px 0 22px;color:#fff;font-weight:600}
+.contact .btn{border-color:rgba(255,255,255,.6);color:#fff;background:transparent}
+.contact .btn.main{background:#fff;color:var(--navy);border-color:#fff}
+.float-cta{position:fixed;right:20px;bottom:20px;z-index:55;padding:12px 18px;border-radius:999px;background:#12182A;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 14px 34px -10px rgba(10,19,48,.65);transform:translateY(140%);opacity:0;transition:transform .45s var(--ease),opacity .3s}
+.float-cta.show{transform:none;opacity:1}
+.hero>*{animation:rise .9s var(--ease) backwards}
+.hero>:nth-child(2){animation-delay:.08s}.hero>:nth-child(3){animation-delay:.16s}.hero>:nth-child(4){animation-delay:.24s}.hero>:nth-child(5){animation-delay:.32s}.hero>:nth-child(6){animation-delay:.42s}
+.js .reveal{opacity:0}
+.js .reveal.in{opacity:1;animation:rise .85s var(--ease) var(--d,0ms) backwards}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
+@keyframes float{50%{translate:0 -12px}}
+@keyframes pulse{50%{opacity:.55;transform:scale(1.08)}}
+@keyframes rays{to{background-position:230px 0}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(92,240,168,.7)}80%,100%{box-shadow:0 0 0 10px rgba(92,240,168,0)}}
+@keyframes scroll{to{transform:translateX(calc(-50% - 23px))}}
+@media (max-width:850px){header nav{display:none}.nums{grid-template-columns:repeat(2,1fr);margin-top:-50px}.path{grid-template-columns:1fr 1fr}.path li::after{display:none}.phones-crop{height:280px}.phones-crop .ph{max-width:31%}}
+@media (max-width:600px){.nums,.path{grid-template-columns:1fr}.stats{flex-direction:column;gap:14px}.stat{padding:0}.stat+.stat{border-left:0;border-top:1px solid var(--line);padding-top:14px}.head-cta{display:none}.hero h1{max-width:13ch}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1}}
+
+/* ---- v4: dark page, full-width header, uncropped mockups ---- */
+html{overflow-x:clip;color-scheme:dark}
+header{margin-inline:calc(50% - 50vw);padding-inline:max(24px,calc(50vw - 496px))}
+.btn{border-color:rgba(255,255,255,.4);color:#fff;background:transparent}
+.btn:hover{background:rgba(255,255,255,.1)}
+.btn.main,.hero .btn.main{background:#fff;color:var(--navy);border-color:#fff;box-shadow:0 12px 34px -10px rgba(140,170,255,.55)}
+.btn.main:hover{background:#fff}
+.card,.compact-card,.github-card{background:linear-gradient(150deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border-color:var(--line);box-shadow:0 24px 50px -30px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.card:hover,.compact-card:hover,.github-card:hover{border-color:rgba(140,170,255,.5);box-shadow:0 30px 60px -26px rgba(60,100,255,.5)}
+.card::after,.compact-card::after,.github-card::after{background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(140,170,255,.14),transparent 60%)}
+.project-visual::before{background:radial-gradient(closest-side,rgba(70,110,255,.5),rgba(130,170,255,.14) 62%,transparent)}
+.num-card{color:#0E1424}
+.num-head b{color:#0E1424}.num-head em{border-color:#DCE3F0;color:#56627A}
+.num-card p{color:#56627A}
+.num-card:hover{box-shadow:0 30px 60px -24px rgba(60,100,255,.6)}
+.chip{color:#6F7EA6}
+.contact{background:linear-gradient(160deg,#16296A,#2B50D8 150%);box-shadow:0 40px 80px -34px rgba(43,80,216,.6)}
+.float-cta{background:#fff;color:var(--navy)}
+.phones-crop{height:420px;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+/* real mockups: show whole image, no extra frame */
+.ph:has(img){aspect-ratio:auto;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;display:block;max-width:none;flex:1 1 0;min-width:0}
+.ph:has(img) img{position:static;width:100%;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 26px 34px rgba(0,0,0,.5))}
+.ph:has(img) span{display:none}
+.phones:has(img){align-items:center}
+.phones-crop .phones:has(img){align-items:flex-start}
+.phones-crop .ph:has(img){max-width:260px}
+@media (max-width:850px){.phones-crop{height:320px}}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<div class="wrap">
+<header>
+  <a class="brand" href="#top">Юсуф Муратов</a>
+  <nav aria-label="Main navigation">
+    <a href="#projects"><span lang="ru">Проекты</span><span lang="en">Projects</span></a>
+    <a href="#path"><span lang="ru">Путь</span><span lang="en">Path</span></a>
+    <a href="#github">GitHub</a>
+    <a href="#about"><span lang="ru">Обо мне</span><span lang="en">About</span></a>
+    <a href="#contact"><span lang="ru">Контакты</span><span lang="en">Contact</span></a>
+  </nav>
+  <div class="head-right">
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="ru">RU</button><button type="button" data-set="en">EN</button></div>
+    <a class="head-cta" href="https://t.me/ymuratov_work"><span lang="ru">Написать</span><span lang="en">Message</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div><span class="pill"><i class="dot"></i><span lang="ru">Открыт к предложениям</span><span lang="en">Open to opportunities</span></span></div>
+    <p class="eyebrow">Middle Android Developer · Kotlin · Jetpack Compose</p>
+    <h1 id="hero-title"><span lang="ru">Разрабатываю Android-продукты, которые удобно использовать и развивать</span><span lang="en">I build Android products that are easy to use and evolve</span></h1>
+    <p class="lead"><span lang="ru">Около 4 лет коммерческой разработки: сложный UI на Compose, архитектурные переработки, интеграции и релизы. Ищу сильную продуктовую команду.</span><span lang="en">Around 4 years of commercial work: complex Compose UI, architecture refactoring, integrations and releases. Looking for a strong product team.</span></p>
+    <div class="cta">
+      <a class="btn main" href="https://t.me/ymuratov_work"><span lang="ru">Написать в Telegram</span><span lang="en">Contact on Telegram</span> <span aria-hidden="true">↗</span></a>
+      <a class="btn" href="yusuf-muratov-android-developer-cv-ru.pdf" target="_blank" rel="noopener"><span lang="ru">Резюме PDF</span><span lang="en">CV PDF (Russian)</span> <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="phones-crop" aria-label="App previews"><div class="phones">
+      <figure class="ph"><span>Медиториум</span><img src="img/meditorium-player.png" alt="" onerror="this.remove()"></figure>
+      <figure class="ph"><span>АвтоГИС</span><img src="img/avtogis-booking.png" alt="" onerror="this.remove()"></figure>
+      <figure class="ph"><span>Dream Lip Sync</span><img src="img/dream-lip-sync-result.png" alt="" onerror="this.remove()"></figure>
+    </div></div>
+  </section>
+
+  <div class="nums"><article class="num-card"><div class="num-head"><b>01</b><em>UI</em></div><h3><span lang="ru">Jetpack Compose и сложный UI</span><span lang="en">Jetpack Compose and complex UI</span></h3><p><span lang="ru">Перенос дизайна в приложение: анимации, пейджеры, вложенный скролл.</span><span lang="en">Turning designs into apps: animations, pagers, nested scrolling.</span></p></article><article class="num-card"><div class="num-head"><b>02</b><em>Architecture</em></div><h3><span lang="ru">Архитектура и рефакторинг</span><span lang="en">Architecture and refactoring</span></h3><p><span lang="ru">MVI, многомодульность, переход с XML и MVVM без остановки поддержки.</span><span lang="en">MVI, multi-module setups, moving off XML and MVVM without pausing support.</span></p></article><article class="num-card"><div class="num-head"><b>03</b><em>Integrations</em></div><h3><span lang="ru">Интеграции</span><span lang="en">Integrations</span></h3><p><span lang="ru">Платежи и подписки, карты, чаты, медиа, push-уведомления.</span><span lang="en">Payments and subscriptions, maps, chat, media, push notifications.</span></p></article><article class="num-card"><div class="num-head"><b>04</b><em>Releases</em></div><h3><span lang="ru">Релизы в сторы</span><span lang="en">Store releases</span></h3><p><span lang="ru">Google Play и RuStore: сборки, кабинеты, публикация.</span><span lang="en">Google Play and RuStore: builds, consoles, publishing.</span></p></article></div>
+
+  <div class="stats" aria-label="Career highlights">
+    <div class="stat"><strong>~4</strong><span><span lang="ru">года коммерческой Android-разработки</span><span lang="en">years of commercial Android development</span></span></div>
+    <div class="stat"><strong>5</strong><span><span lang="ru">приложений доведено до публикации в сторах</span><span lang="en">apps shipped to app stores</span></span></div>
+    <div class="stat"><strong>116k+</strong><span><span lang="ru">суммарных установок у продуктов, с которыми работал</span><span lang="en">combined installs across products I've worked on</span></span></div>
+  </div>
+
+  <p class="trust"><span lang="ru">Продукты, с которыми я работал</span><span lang="en">Products I have worked on</span></p>
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span class="chip">Dental First</span><span class="chip">Медиториум</span><span class="chip">АвтоГИС</span><span class="chip">DrimSim</span><span class="chip">Dream Lip Sync</span><span class="chip">PetAI</span><span class="chip">FairytaleBaby</span><span class="chip">Radikal</span><span class="chip">Dental First</span><span class="chip">Медиториум</span><span class="chip">АвтоГИС</span><span class="chip">DrimSim</span><span class="chip">Dream Lip Sync</span><span class="chip">PetAI</span><span class="chip">FairytaleBaby</span><span class="chip">Radikal</span></div></div>
+
+  <section id="projects" aria-labelledby="h-work">
+    <div class="section-head">
+      <div>
+        <h2 id="h-work"><span lang="ru">Коммерческие проекты</span><span lang="en">Commercial projects</span></h2>
+        <p class="sub"><span lang="ru">Три проекта, которые лучше всего показывают мой опыт в разработке, архитектуре и развитии Android-продуктов.</span><span lang="en">Three projects that best demonstrate my experience building, refactoring, and evolving Android products.</span></p>
+      </div>
+    </div>
+    <div class="project-list">
+      <article class="card">
+        <div>
+          <h3><span lang="ru">Медиториум</span><span lang="en">Meditorium</span></h3>
+          <p><span lang="ru">Приложение для обучения медитациям. В рамках полного редизайна предложил перейти с XML на Jetpack Compose и практически заново собрал Android-версию: переработал архитектуру с MVVM на MVI, обновил библиотеки и организовал код по функциональным пакетам. Реализовал около 25 экранов за 3–4 месяца.</span><span lang="en">A meditation learning app. As part of a full redesign, I proposed moving from XML to Jetpack Compose and rebuilt most of the Android implementation: moved from MVVM to MVI, updated libraries, and organized code by feature packages. Delivered around 25 screens in 3–4 months.</span></p>
+          <p><span lang="ru">Также реализовал офлайн-режим с хранением прогресса в Room и синхронизацией с сервером. Вместе с другим разработчиком доработал чат поддержки, чтобы отправка больших файлов и восстановление соединения работали надёжнее.</span><span lang="en">I also implemented offline learning with progress stored in Room and synchronized with the server. Together with another developer, I improved the support chat to handle large-file transfers and reconnects more reliably.</span></p>
+          <p class="project-meta"><span lang="ru">~25 экранов · 3–4 месяца · RuStore 4.9 · 1 000+ установок в RuStore</span><span lang="en">~25 screens · 3–4 months · 4.9 on RuStore · 1,000+ RuStore installs</span></p>
+          <p class="links"><a href="https://www.rustore.ru/catalog/app/online.meditorium" target="_blank" rel="noopener">RuStore ↗</a><a href="https://play.google.com/store/apps/details?id=online.meditorium" target="_blank" rel="noopener">Google Play ↗</a></p>
+        </div>
+        <div class="project-visual">
+          <div class="phones">
+            <figure class="ph"><span>Медиториум</span><img src="img/meditorium-player.png" alt="" onerror="this.remove()"></figure>
+            <figure class="ph"><span>Медиториум</span><img src="img/meditorium-calendar.png" alt="" onerror="this.remove()"></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <h3><span lang="ru">АвтоГИС</span><span lang="en">AutoGIS</span></h3>
+          <p><span lang="ru">Приложение для поиска автомоек и онлайн-записи с просмотром очереди по RTSP-трансляциям. Перевёл монолит на архитектуру примерно из 20 Gradle-модулей, унифицировал работу с геолокацией Google и Huawei и вместе с iOS и backend добился стабильного обновления слотов через WebSocket.</span><span lang="en">An app for finding car washes, booking online, and checking queues through RTSP streams. Split the monolith into around 20 Gradle modules, unified Google and Huawei location handling, and worked with iOS and backend developers to stabilize real-time slot updates over WebSocket.</span></p>
+          <p><span lang="ru">Заменил VLC на ExoPlayer для воспроизведения RTSP. Это уменьшило размер приложения примерно с 300 до 120 МБ.</span><span lang="en">Replaced VLC with ExoPlayer for RTSP playback, reducing the app size from about 300 MB to 120 MB.</span></p>
+          <p class="project-meta"><span lang="ru">−60% размера приложения · 500+ автомоек на момент релиза</span><span lang="en">−60% app size · 500+ car washes at launch</span></p>
+          <p class="links"><a href="https://www.rustore.ru/catalog/app/mobi.sevenwinds.avtogis.prod" target="_blank" rel="noopener">RuStore ↗</a></p>
+        </div>
+        <div class="project-visual">
+          <div class="phones">
+            <figure class="ph"><span>АвтоГИС</span><img src="img/avtogis-booking.png" alt="" onerror="this.remove()"></figure>
+            <figure class="ph"><span>АвтоГИС</span><img src="img/avtogis-camera.png" alt="" onerror="this.remove()"></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="tag"><span lang="ru">В разработке · перед релизом</span><span lang="en">In development · pre-release</span></span>
+          <h3>Dental First</h3>
+          <p><span lang="ru">Android-приложение интернет-магазина стоматологических и зуботехнических товаров. Я единственный Android-разработчик: выбрал стек, спроектировал архитектуру и реализовал каталог, корзину, заказы, push-уведомления, чат поддержки и выбор адреса доставки на карте.</span><span lang="en">An Android app for a dental and dental-lab supplies store. As the sole Android developer, I selected the stack, designed the architecture, and built the catalog, cart, orders, push notifications, support chat, and map-based delivery address selection.</span></p>
+          <p><span lang="ru">Отдельное внимание уделил корзине до регистрации: локальные данные сохраняются, синхронизируются с сервером и не теряются при входе. Перед релизом занимаюсь оптимизацией производительности и пересмотром структуры общего кода.</span><span lang="en">A key flow is the pre-sign-up cart: local data is persisted and synchronized with the server without being lost on login. Before release, I'm focusing on performance optimization and improving shared-code boundaries.</span></p>
+          <p class="project-meta"><span lang="ru">60 000+ товаров в каталоге · Kotlin · Compose · Room · Paging</span><span lang="en">60,000+ products · Kotlin · Compose · Room · Paging</span></p>
+          <p class="links"><a href="https://dental-first.ru/" target="_blank" rel="noopener">dental-first.ru ↗</a></p>
+        </div>
+        <div class="project-visual">
+          <div class="phones">
+            <figure class="ph"><span>Dental First</span><img src="img/dental-first-catalog.png" alt="" onerror="this.remove()"></figure>
+            <figure class="ph"><span>Dental First</span><img src="img/dental-first-cart.png" alt="" onerror="this.remove()"></figure>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="other-work" aria-labelledby="h-other">
+    <div class="section-head">
+      <div>
+        <h2 id="h-other"><span lang="ru">Другой коммерческий опыт</span><span lang="en">More commercial experience</span></h2>
+        <p class="sub"><span lang="ru">Остальные проекты — коротко, через задачу и то, за что я отвечал.</span><span lang="en">Other projects, summarized by the problem and my contribution.</span></p>
+      </div>
+    </div>
+    <div class="compact-grid">
+      <article class="compact-card">
+        <h3>Dream Lip Sync и PetAI</h3>
+        <p><span lang="ru">Разработал и опубликовал два AI-приложения: генерация видео с липсинком, аватаров и голоса. Подключил внешние AI-сервисы и подписки Google Play Billing.</span><span lang="en">Built and published two AI apps for lip-sync videos, avatars, and voice generation. Integrated external AI services and Google Play Billing subscriptions.</span></p>
+        <p class="project-meta"><span lang="ru">10 000+ и 5 000+ установок соответственно</span><span lang="en">10,000+ and 5,000+ installs respectively</span></p>
+        <p class="links"><a href="https://play.google.com/store/apps/details?id=me.yeahapps.liveface" target="_blank" rel="noopener">Dream Lip Sync ↗</a><a href="https://play.google.com/store/apps/details?id=me.yeahapps.mypetai" target="_blank" rel="noopener">PetAI ↗</a></p>
+      </article>
+      <article class="compact-card">
+        <h3>DrimSim</h3>
+        <p><span lang="ru">Работал с существующим приложением международного поставщика SIM/eSIM: обновил зависимости, устранил критические краши, мигрировал чат с Freshchat на Jivo и интегрировал CloudPayments.</span><span lang="en">Worked on an existing app for an international SIM/eSIM provider: updated dependencies, fixed critical crashes, migrated chat from Freshchat to Jivo, and integrated CloudPayments.</span></p>
+        <p class="project-meta"><span lang="ru">100 000+ установок у продукта</span><span lang="en">100,000+ installs for the product</span></p>
+        <p class="links"><a href="https://play.google.com/store/apps/details?id=com.drimsim" target="_blank" rel="noopener">Google Play ↗</a></p>
+      </article>
+      <article class="compact-card">
+        <h3>FairytaleBaby</h3>
+        <p><span lang="ru">Переработал приложение колыбельных на основе переданного исходного кода. Реализовал фоновое воспроизведение и интегрировал CloudPayments вместе с Google Billing с выбором способа оплаты по данным пользователя.</span><span lang="en">Reworked a lullaby app from an existing codebase, implemented background playback, and integrated CloudPayments alongside Google Billing with payment-method selection based on user data.</span></p>
+        <p class="links"><a href="https://play.google.com/store/apps/details?id=baby.fairytale.app" target="_blank" rel="noopener">Google Play ↗</a></p>
+      </article>
+      <article class="compact-card">
+        <span class="tag"><span lang="ru">В разработке</span><span lang="en">In development</span></span>
+        <h3>Radikal</h3>
+        <p><span lang="ru">AI-фотосессии и инструменты генерации изображений. Реализовал выбор лица через ML Kit и перенёс веб-дизайн в Compose с анимациями без готовых макетов в Figma.</span><span lang="en">AI photoshoots and image-generation tools. Implemented face selection with ML Kit and recreated the web design in Compose, including animations, without Figma mockups.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="path" aria-labelledby="h-path">
+    <div class="section-head"><div><h2 id="h-path"><span lang="ru">Путь</span><span lang="en">Career path</span></h2></div></div>
+    <ul class="path"><li><time>2022–2023</time><b>ABC Team</b><span><span lang="ru">Junior Android-разработчик: мини-приложения и игры на нативном Kotlin.</span><span lang="en">Junior Android developer: mini apps and games in native Kotlin.</span></span></li><li><time>2024–2025</time><b>Seven Winds Studio</b><span><span lang="ru">Медиториум и АвтоГИС: миграция на Compose, многомодульность, RTSP.</span><span lang="en">Meditorium and AutoGIS: Compose migration, multi-module setup, RTSP.</span></span></li><li><time>2025–<span lang="ru">сейчас</span><span lang="en">now</span></time><b>Freelance</b><span><span lang="ru">YeahApps, DrimSim, Fruktorum, ИнТех: AI-приложения, легаси, платежи.</span><span lang="en">YeahApps, DrimSim, Fruktorum, InTech: AI apps, legacy rescue, payments.</span></span></li><li><time>2026–<span lang="ru">сейчас</span><span lang="en">now</span></time><b>Dental First</b><span><span lang="ru">Единственный Android-разработчик, приложение перед релизом.</span><span lang="en">Sole Android developer, app heading to release.</span></span></li></ul>
+  </section>
+
+  <section id="github" aria-labelledby="h-github">
+    <div class="section-head">
+      <div>
+        <h2 id="h-github"><span lang="ru">Проекты на GitHub</span><span lang="en">Projects on GitHub</span></h2>
+        <p class="sub"><span lang="ru">Личные и учебные проекты — чтобы посмотреть на мой подход к архитектуре и новым технологиям вне коммерческих задач.</span><span lang="en">Personal and learning projects that show how I approach architecture and new technologies beyond commercial work.</span></p>
+      </div>
+    </div>
+    <div class="github-grid">
+      <article class="github-card">
+        <span class="repo-type"><span lang="ru">Pet project</span><span lang="en">Pet project</span></span>
+        <h3>RickAndMortyGraphQL</h3>
+        <p><span lang="ru">Android-приложение на Compose с Apollo GraphQL, Navigation3, Paging 3 и модульной структурой. Список персонажей, поиск и переход к связанным данным.</span><span lang="en">A Compose Android app using Apollo GraphQL, Navigation3, Paging 3, and a modular structure. Includes character browsing, search, and related-data navigation.</span></p>
+        <a href="https://github.com/muratov-dev/RickAndMortyGraphQL" target="_blank" rel="noopener"><span lang="ru">Открыть репозиторий</span><span lang="en">Open repository</span> ↗</a>
+      </article>
+      <article class="github-card">
+        <span class="repo-type"><span lang="ru">Архитектура</span><span lang="en">Architecture</span></span>
+        <h3>MultiModuleLearning</h3>
+        <p><span lang="ru">Учебный Android-проект для экспериментов со структурой app / core / feature и разделением функциональности по Gradle-модулям.</span><span lang="en">A learning project for experimenting with app / core / feature structure and separating functionality into Gradle modules.</span></p>
+        <a href="https://github.com/muratov-dev/MultiModuleLearning" target="_blank" rel="noopener"><span lang="ru">Открыть репозиторий</span><span lang="en">Open repository</span> ↗</a>
+      </article>
+      <article class="github-card">
+        <span class="repo-type"><span lang="ru">Тестовое задание</span><span lang="en">Take-home assignment</span></span>
+        <h3>Lumo</h3>
+        <p><span lang="ru">Приложение с каталогом фильмов, категориями, пагинацией и экраном подробностей. Kotlin, XML Views, Coroutines, Retrofit, MVI и Clean Architecture.</span><span lang="en">A movie catalog with categories, pagination, and a details screen. Built with Kotlin, XML Views, Coroutines, Retrofit, MVI, and Clean Architecture.</span></p>
+        <a href="https://github.com/muratov-dev/JustMobyTestProject" target="_blank" rel="noopener"><span lang="ru">Открыть репозиторий</span><span lang="en">Open repository</span> ↗</a>
+      </article>
+    </div>
+    <p class="links github-footer"><a href="https://github.com/muratov-dev" target="_blank" rel="noopener"><span lang="ru">Все репозитории на GitHub</span><span lang="en">All repositories on GitHub</span> ↗</a></p>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="h-about">
+    <div>
+      <h2 id="h-about"><span lang="ru">Обо мне</span><span lang="en">About me</span></h2>
+      <p><span lang="ru">Я привык самостоятельно отвечать за Android-часть продукта: разбираться в существующем коде, выбирать подход, оценивать задачи и доводить реализацию до релиза. При этом работаю в связке с backend, iOS, дизайнерами, QA и менеджерами — от обсуждения требований до проверки результата.</span><span lang="en">I'm used to owning the Android side of a product: understanding an existing codebase, choosing an approach, estimating work, and shipping the implementation. I collaborate with backend, iOS, design, QA, and product managers from requirements through validation.</span></p>
+      <p class="about-copy"><span lang="ru">Следующий шаг для меня — сильная продуктовая команда и более глубокая инженерная экспертиза: не просто закрывать задачи, а понимать системы и развивать продукт вместе с опытными коллегами.</span><span lang="en">My next step is a strong product team where I can deepen my engineering skills—not just deliver tasks, but understand systems and evolve a product with experienced colleagues.</span></p>
+    </div>
+    
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="h-contact">
+    <h2 id="h-contact"><span lang="ru">Ищете Android-разработчика в продуктовую команду?</span><span lang="en">Looking for an Android developer for your product team?</span></h2>
+    <p class="sub"><span lang="ru">Открыт к предложениям Middle Android Developer. Предпочитаю удалённую работу, готов рассмотреть переезд ради сильной команды и интересного продукта.</span><span lang="en">Open to Middle Android Developer opportunities. I prefer remote work and would consider relocation for a strong team and an interesting product.</span></p>
+    <p class="sub order"><span lang="ru">Беру и проекты на заказ: приложение с нуля, доработка, миграция на Compose.</span><span lang="en">I also take on commissions: new apps, rework, Compose migration.</span></p>
+    <div class="cta">
+      <a class="btn main" href="https://t.me/ymuratov_work">Telegram: @ymuratov_work ↗</a>
+      <a class="btn" href="mailto:work.yusuf.muratov@gmail.com">work.yusuf.muratov@gmail.com</a>
+    </div>
+    <div class="row">
+      <a href="https://www.linkedin.com/in/ymuratov" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/muratov-dev" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="yusuf-muratov-android-developer-cv-ru.pdf" target="_blank" rel="noopener"><span lang="ru">Резюме PDF</span><span lang="en">CV PDF (Russian)</span> ↗</a>
+    </div>
+  </section>
+</main>
+<footer><span>© 2026 Юсуф Муратов / Yusuf Muratov</span><span><span lang="ru">Middle Android Developer</span><span lang="en">Middle Android Developer</span></span></footer>
+</div>
+<a class="float-cta" href="https://t.me/ymuratov_work"><span lang="ru">Написать в Telegram</span><span lang="en">Message on Telegram</span></a>
+<script>
+(function(){
+  var root=document.documentElement,key="lang";
+  function set(l){
+    root.setAttribute("data-l",l);root.lang=l;
+    document.title=l==="ru"?"Юсуф Муратов — Middle Android Developer":"Yusuf Muratov — Middle Android Developer";
+    var description=document.querySelector('meta[name="description"]');
+    if(description) description.setAttribute("content",l==="ru"?"Юсуф Муратов — Middle Android Developer. Около 4 лет коммерческого опыта, Kotlin, Jetpack Compose, архитектура и развитие Android-продуктов.":"Yusuf Muratov — Middle Android Developer. Around 4 years of commercial experience with Kotlin, Jetpack Compose, architecture, and Android product development.");
+    try{localStorage.setItem(key,l)}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem(key)}catch(e){}
+  set(saved||((navigator.language||"ru").toLowerCase().indexOf("ru")===0?"ru":"en"));
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){set(b.getAttribute("data-set"))})});
+})();
+</script>
+<script>
+(function(){
+  var d=document,root=d.documentElement,rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var bar=d.querySelector(".progress");
+  function onScroll(){var h=root.scrollHeight-innerHeight;bar.style.transform="scaleX("+(h>0?Math.min(scrollY/h,1):0)+")"}
+  addEventListener("scroll",onScroll,{passive:true});onScroll();
+  d.querySelectorAll(".card,.compact-card,.github-card,.stat").forEach(function(el){
+    el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect();el.style.setProperty("--mx",(e.clientX-r.left)+"px");el.style.setProperty("--my",(e.clientY-r.top)+"px")});
+  });
+  if(rm||!("IntersectionObserver" in window))return;
+  root.classList.add("js");
+  function count(el){
+    var m=el.textContent.match(/^(\D*)(\d+)(.*)$/);if(!m)return;
+    var n=+m[2],t0=null;
+    function step(t){t0=t0||t;var p=Math.min((t-t0)/1200,1),e=1-Math.pow(1-p,3);el.textContent=m[1]+Math.round(n*e)+m[3];if(p<1)requestAnimationFrame(step)}
+    el.textContent=m[1]+"0"+m[3];requestAnimationFrame(step);
+  }
+  var els=[].slice.call(d.querySelectorAll(".section-head,.card,.compact-card,.github-card,.stat,.num-card,.path li,.about>div:first-child,.contact"));
+  els.forEach(function(el){var i=[].indexOf.call(el.parentNode.children,el);el.style.setProperty("--d",Math.min(i,5)*90+"ms");el.classList.add("reveal")});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add("in");io.unobserve(e.target);
+    if(e.target.classList.contains("stat"))count(e.target.querySelector("strong"));
+  })},{threshold:.15,rootMargin:"0px 0px -6% 0px"});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+<script>
+(function(){
+  var d=document,root=d.documentElement,h=d.querySelector("header"),fc=d.querySelector(".float-cta"),ct=d.getElementById("contact");
+  var nearContact=false;
+  function upd(){h.classList.toggle("scrolled",scrollY>40);fc.classList.toggle("show",scrollY>700&&!nearContact)}
+  addEventListener("scroll",upd,{passive:true});upd();
+  if("IntersectionObserver" in window&&ct){new IntersectionObserver(function(e){nearContact=e[0].isIntersecting;upd()},{threshold:.2}).observe(ct)}
+  root.classList.add("collapsible");
+  d.querySelectorAll(".card").forEach(function(c){
+    var ps=[].slice.call(c.querySelectorAll(":scope > div:first-child > p:not([class])"));
+    if(ps.length<2)return;
+    ps.slice(1).forEach(function(p){p.classList.add("more")});
+    var b=d.createElement("button");b.type="button";b.className="more-btn";b.setAttribute("aria-expanded","false");
+    b.innerHTML='<span lang="ru"><i class="c">Подробнее</i><i class="o">Свернуть</i></span><span lang="en"><i class="c">Details</i><i class="o">Less</i></span>';
+    b.addEventListener("click",function(){var o=c.classList.toggle("open");b.setAttribute("aria-expanded",o)});
+    ps[0].after(b);
+  });
+})();
+</script>
+</body>
+</html>
