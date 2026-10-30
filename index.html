@@ -41,7 +41,7 @@ h1{font-size:clamp(2.25rem,5vw,4rem);line-height:1.04;font-weight:800;letter-spa
 .btn:hover{filter:brightness(.96);transform:translateY(-1px)}
 .hero-visual{min-width:0;padding:14px 0 10px}
 .phones{display:flex;gap:14px;justify-content:center;align-items:flex-end}
-.ph{position:relative;margin:0;width:100%;max-width:168px;aspect-ratio:9/19;border:6px solid var(--text);border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#EEF2FD,#D9E2FA);display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 18px 36px rgba(20,33,61,.12)}
+.ph{position:relative;margin:0;width:100%;max-width:168px;aspect-ratio:9/19;border:6px solid var(--text);border-radius:28px;overflow:visible;background:linear-gradient(160deg,#EEF2FD,#D9E2FA);display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 18px 36px rgba(20,33,61,.12)}
 .ph span{font-size:.8rem;font-weight:700;color:var(--muted);padding:8px}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .phones .ph:nth-child(2){transform:translateY(-20px)}
@@ -55,7 +55,7 @@ section{padding:66px 0}
 h2{font-size:clamp(1.65rem,3vw,2.1rem);font-weight:800;letter-spacing:-.035em;line-height:1.15;margin:0 0 8px}
 .sub{color:var(--muted);margin:0;max-width:45em}
 .project-list{display:grid;gap:18px}
-.card{display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px;margin:0;overflow:hidden}
+.card{display:grid;grid-template-columns:1.12fr .88fr;gap:34px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px;margin:0;overflow:visible}
 .card:nth-child(even) .project-visual{order:-1}
 .card h3{margin:0 0 10px;font-size:1.4rem;font-weight:800;letter-spacing:-.025em}
 .card p{margin:0 0 14px}
@@ -137,7 +137,7 @@ html[data-l="ru"] .lang [data-set="ru"],html[data-l="en"] .lang [data-set="en"]{
 .btn.main{background:#12182A;border-color:#12182A;color:#fff;box-shadow:0 12px 30px -10px rgba(10,19,48,.7)}
 .hero .btn:not(.main){background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
 .hero .btn:not(.main):hover{background:rgba(255,255,255,.22)}
-.phones-crop{margin-top:46px;height:340px;overflow:hidden;padding-top:26px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.phones-crop{margin-top:46px;height:340px;overflow:visible;padding-top:26px;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
 .phones-crop .phones{align-items:flex-start;gap:24px}
 .phones-crop .ph{max-width:210px}
 .ph{border:5px solid #07102A;background:linear-gradient(160deg,#2C4A8C,#16295C);box-shadow:0 30px 50px -16px rgba(5,10,30,.6),0 0 0 1px rgba(255,255,255,.15);animation:float 7s ease-in-out infinite}
@@ -173,7 +173,7 @@ html[data-l="ru"] .lang [data-set="ru"],html[data-l="en"] .lang [data-set="en"]{
 .more-btn{all:unset;cursor:pointer;color:var(--accent);font-weight:800;font-size:.92rem;margin:2px 0 14px;display:inline-block;border-bottom:1px solid currentColor}
 .more-btn .o{display:none}.card.open .more-btn .o{display:inline}.card.open .more-btn .c{display:none}
 .collapsible .card .more{display:none}.collapsible .card.open .more{display:block}
-.compact-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:thin}
+.compact-grid{display:flex;gap:14px;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;padding: 16px 2px 28px;scrollbar-width:thin}
 .compact-card{flex:0 0 min(370px,84%);scroll-snap-align:start}
 .path{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:0;padding:0;list-style:none}
 .path li{position:relative;padding-top:28px}
@@ -234,6 +234,10 @@ header{margin-inline:calc(50% - 50vw);padding-inline:max(24px,calc(50vw - 496px)
 .phones-crop .phones:has(img){align-items:flex-start}
 .phones-crop .ph:has(img){max-width:260px}
 @media (max-width:850px){.phones-crop{height:320px}}
+#projects .card:nth-child(1) .project-visual,
+#projects .card:nth-child(3) .project-visual {
+    transform: translateY(20px);
+}
 </style>
 </head>
 <body>
@@ -266,7 +270,7 @@ header{margin-inline:calc(50% - 50vw);padding-inline:max(24px,calc(50vw - 496px)
     </div>
     <div class="phones-crop" aria-label="App previews"><div class="phones">
       <figure class="ph"><span>Медиториум</span><img src="img/meditorium-2.png" alt="" onerror="this.remove()"></figure>
-      <figure class="ph"><span>АвтоГИС</span><img src="img/avtogis-2.png" alt="" onerror="this.remove()"></figure>
+      <figure class="ph"><span>АвтоГИС</span><img src="img/avtogis-1.png" alt="" onerror="this.remove()"></figure>
       <figure class="ph"><span>Dream Lip Sync</span><img src="img/dls-1.png" alt="" onerror="this.remove()"></figure>
     </div></div>
   </section>
@@ -415,7 +419,7 @@ header{margin-inline:calc(50% - 50vw);padding-inline:max(24px,calc(50vw - 496px)
       <p><span lang="ru">Я привык самостоятельно отвечать за Android-часть продукта: разбираться в существующем коде, выбирать подход, оценивать задачи и доводить реализацию до релиза. При этом работаю в связке с backend, iOS, дизайнерами, QA и менеджерами — от обсуждения требований до проверки результата.</span><span lang="en">I'm used to owning the Android side of a product: understanding an existing codebase, choosing an approach, estimating work, and shipping the implementation. I collaborate with backend, iOS, design, QA, and product managers from requirements through validation.</span></p>
       <p class="about-copy"><span lang="ru">Следующий шаг для меня — сильная продуктовая команда и более глубокая инженерная экспертиза: не просто закрывать задачи, а понимать системы и развивать продукт вместе с опытными коллегами.</span><span lang="en">My next step is a strong product team where I can deepen my engineering skills—not just deliver tasks, but understand systems and evolve a product with experienced colleagues.</span></p>
     </div>
-    
+
   </section>
 
   <section id="contact" class="contact" aria-labelledby="h-contact">
